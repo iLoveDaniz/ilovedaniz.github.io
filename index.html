@@ -9,9 +9,8 @@
         /* Estilos CSS */
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(45deg, #ff7eb9, #ff758c, #ff7eb9);
-            background-size: 200% 200%;
-            animation: fondoAnimado 5s infinite;
+            background: url('Ekko.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,18 +33,18 @@
 
         .password-screen, .container, .dedication-screen {
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 30px;
+            background-color: #0E1117;
+            padding: 20px;
             border-radius: 20px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
+            max-width: 450px;
             margin: 20px;
             position: absolute;
             transition: transform 1s ease-in-out, opacity 1s ease-in-out;
         }
 
         .password-screen h1, .container h1, .dedication-screen h1 {
-            color: #d32f2f;
+            color: #E5E9F0;
             margin-bottom: 20px;
             animation: aparecer 2s ease-in-out;
         }
@@ -69,8 +68,8 @@
             cursor: pointer;
             font-size: 18px;
             font-weight: bold;
-            color: white;
-            background-color: #d32f2f;
+            color: #E5E9F0;
+            background-color: #536878;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             animation: latido 1.5s infinite;
@@ -94,7 +93,7 @@
         }
 
         .error-message {
-            color: red;
+            color: #E5E9F0  ;
             font-weight: bold;
             animation: shake 0.5s;
         }
@@ -125,7 +124,7 @@
         }
 
         .container h1 {
-            color: #d32f2f;
+            color: #E5E9F0;
             overflow: hidden;
             white-space: nowrap;
             margin: 0 auto;
@@ -153,8 +152,8 @@
         }
 
         .romantic-buttons #noBtn {
-            background-color: #ccc;
-            color: black;
+            background-color: #536878           ;
+            color: #E5E9F0;
         }
 
         .background-gif {
@@ -205,7 +204,7 @@
             text-align: center;
             margin: 20px 0;
             font-size: 1.2em;
-            color: #d32f2f;
+            color: #E5E9F0;
             max-width: 600px;
             line-height: 1.5;
         }
@@ -214,9 +213,10 @@
             text-align: center;
             margin: 20px 0;
             font-size: 1.5em;
-            color: #d32f2f;
+            color: #E5E9F0;
             max-width: 600px;
             line-height: 1.5;
+            font-weight: bold; /* Hacer el texto en negrita */
         }
 
         .dedication-screen {
@@ -240,6 +240,29 @@
         .dedication-photo {
             margin-top: 20px;
         }
+
+        .video-container {
+            display: none;
+            position: fixed;
+            top: 50%; /* Centrar verticalmente */
+            right: -600px; /* Posición inicial fuera de la pantalla (derecha) */
+            transform: translateY(-50%); /* Centrar verticalmente */
+            width: 550px; /* Aumentar el ancho */
+            height: 310px; /* Aumentar la altura */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: right 2s ease-in-out; /* Animación de movimiento */
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+        }
+
+        .move-left {
+            transform: translateX(-75%);
+        }
     </style>
 </head>
 <body>
@@ -258,9 +281,9 @@
     <div id="romanticScreen" class="container hidden">
         <h1 id="greetingText">Hola gordita</h1>
         <p id="proposalText" class="romantic-text">
-            Este 14 de febrero, que también es nuestro aniversario, 
-            quiero pedirte algo muy especial. 
-            ¿Quieres ser mi San Valentín y celebrar este día tan significativo juntos?
+            San Valentín y nuestro aniversario en un solo día... 
+            no puedo imaginar mejor motivo para pedirte que compartamos este momento inolvidable, 
+            ¿aceptarías?
         </p>
         <div class="heart">❤️</div>
         <div class="romantic-buttons">
@@ -268,7 +291,7 @@
             <button id="noBtn">No</button>
         </div>
         <div id="respuesta" class="hidden fade-in">
-            <p>¡Sabía que dirías que sí! 💖</p>
+            <p style="color: #E5E9F0;">¡Sabía que dirías que sí! 💖</p>
             <div class="gif-container">
                 <img src="teamochikibeibi.gif" alt="GIF romántico">
             </div>
@@ -281,10 +304,10 @@
 
     <!-- Pantalla de dedicatoria (oculta inicialmente) -->
     <div id="dedicationScreen" class="dedication-screen">
-        <h1>Dedicatoria</h1>
+        <h1>Solo Tú y Yo</h1>
         <div class="dedication-content">
             <p class="romantic-text">
-                Mi amor, gracias por estar siempre a mi lado. Eres mi todo y no puedo imaginar mi vida sin ti. Te amo con todo mi corazón.
+                Si pudiera pedir un deseo, sería quedarme contigo para siempre. Eres el centro de todo, mi lugar de descanso y mi mayor bendición. Gracias por hacerme el chico más feliz del planeta. Te amo demasiado Daniela, aunque a veces me colmas la paciencia iwiwiwi
             </p>
             <div class="dedication-photo">
                 <img src="meandani.jpg" alt="Foto de nosotros" style="max-width: 100%; border-radius: 10px;">
@@ -295,9 +318,13 @@
     <div id="backgroundGif" class="background-gif"></div>
     <div id="backgroundGifText" class="background-gif-text">Ya nada ya, ya sabia, tidis iguilis</div>
     
-    <!-- Agregar elementos de audio -->
-    <audio id="romanticMusic" src="musica.mp3"></audio>
+    <!-- Eliminar elemento de audio -->
     <audio id="errorSound" src="no.mp3"></audio>
+
+    <!-- Contenedor de video -->
+    <div id="videoContainer" class="video-container">
+        <video id="romanticVideo" src="dancing.mp4" controls preload="auto"></video>
+    </div>
 
     <script>
         // JavaScript
@@ -305,13 +332,20 @@
         const romanticScreen = document.getElementById('romanticScreen');
         const dedicationScreen = document.getElementById('dedicationScreen');
         const errorMessage = document.getElementById('errorMessage');
-        const romanticMusic = document.getElementById('romanticMusic');
         const errorSound = document.getElementById('errorSound');
         const greetingText = document.getElementById('greetingText');
         const proposalText = document.getElementById('proposalText');
         const thankYouText = document.getElementById('thankYouText');
         const dedicationBtn = document.getElementById('dedicationBtn');
-
+        const videoContainer = document.getElementById('videoContainer');
+        const romanticVideo = document.getElementById('romanticVideo');
+    
+        // Agregar función de precarga del video
+document.addEventListener("DOMContentLoaded", function () {
+    romanticVideo.preload = "auto";
+    romanticVideo.load();
+});
+    
         function checkPassword(correctPassword) {
             if (correctPassword === '14/02/2023') {
                 passwordScreen.classList.add('hidden');
@@ -336,7 +370,6 @@
             respuesta.classList.remove('hidden');
             respuesta.classList.add('fade-in');
             noBtn.classList.add('hidden-completely');
-            romanticMusic.play(); // Reproducir música
             greetingText.classList.add('hidden-completely');
             proposalText.classList.add('hidden-completely');
             thankYouText.classList.remove('hidden-completely');
@@ -365,7 +398,24 @@
         dedicationBtn.addEventListener('click', () => {
             romanticScreen.classList.add('slide-left');
             dedicationScreen.classList.add('slide-right');
-            romanticMusic.volume = 0.2; // Reducir el volumen de la música
+            setTimeout(() => {
+                dedicationScreen.classList.add('move-left');
+                videoContainer.style.display = 'block';
+                setTimeout(() => {
+                    videoContainer.style.right = 'calc(50% - 550px)'; /* Mover un poco a la derecha */
+                    let volume = 0;
+                    romanticVideo.volume = volume;
+                    romanticVideo.play();
+                    const fadeAudio = setInterval(() => {
+                        if (volume < 1) {
+                            volume += 0.05;
+                            romanticVideo.volume = volume;
+                        } else {
+                            clearInterval(fadeAudio);
+                        }
+                    }, 200);
+                }, 1000);
+            }, 2000);
         });
     </script>
 </body>
